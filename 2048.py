@@ -50,15 +50,56 @@ def add_new_tile():
 add_new_tile()
 add_new_tile()
 
+def move_left():
+
+    global board
+
+    moved = False
+
+    for i in range(SIZE):
+
+        row = list(board[i])
+
+        # Remove zeros
+        row = [x for x in row if x != 0]
+
+        # Merge same numbers
+        j = 0
+
+        while j < len(row) - 1:
+
+            if row[j] == row[j + 1]:
+
+                row[j] *= 2
+                row.pop(j + 1)
+                moved = True
+
+            j += 1
+
+        # Fill remaining spaces with zeros
+        while len(row) < SIZE:
+            row.append(0)
+
+        if list(board[i]) != row:
+            moved = True
+
+        board[i] = row
+
+    return moved
+
 while True:
 
     print_board()
 
-    move = input(
-        "\nPress Enter for next tile (q to quit): "
-    )
+    print("\nA = Left")
+    print("Q = Quit")
 
-    if move.lower() == "q":
+    move = input("Move: ").lower()
+
+    if move == "q":
         break
 
-    add_new_tile()
+    elif move == "a":
+
+        if move_left():
+            add_new_tile()
