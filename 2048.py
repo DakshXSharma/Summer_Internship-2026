@@ -46,10 +46,6 @@ def add_new_tile():
         board[row][col] = 4
 
 
-# Start Game
-add_new_tile()
-add_new_tile()
-
 def move_left():
 
     global board
@@ -86,6 +82,12 @@ def move_left():
         board[i] = row
 
     return moved
+
+
+# Start Game
+add_new_tile()
+add_new_tile()
+
 
 while True:
 
