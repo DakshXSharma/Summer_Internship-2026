@@ -84,6 +84,49 @@ def move_left():
     return moved
 
 
+def move_right():
+
+    global board
+
+    board = np.fliplr(board)
+
+    moved = move_left()
+
+    board = np.fliplr(board)
+
+    return moved
+
+
+def move_up():
+
+    global board
+
+    board = board.T
+
+    moved = move_left()
+
+    board = board.T
+
+    return moved
+
+
+def move_down():
+
+    global board
+
+    board = board.T
+
+    board = np.fliplr(board)
+
+    moved = move_left()
+
+    board = np.fliplr(board)
+
+    board = board.T
+
+    return moved
+
+
 # Start Game
 add_new_tile()
 add_new_tile()
@@ -93,15 +136,30 @@ while True:
 
     print_board()
 
-    print("\nA = Left")
+    print("\nW = Up")
+    print("A = Left")
+    print("S = Down")
+    print("D = Right")
     print("Q = Quit")
 
     move = input("Move: ").lower()
 
-    if move == "q":
+    moved = False
+
+    if move == "a":
+        moved = move_left()
+
+    elif move == "d":
+        moved = move_right()
+
+    elif move == "w":
+        moved = move_up()
+
+    elif move == "s":
+        moved = move_down()
+
+    elif move == "q":
         break
 
-    elif move == "a":
-
-        if move_left():
-            add_new_tile()
+    if moved:
+        add_new_tile()
