@@ -6,6 +6,8 @@ SIZE = 4
 # Create empty board
 board = np.zeros((SIZE, SIZE), dtype=int)
 
+score = 0
+
 
 def print_board():
 
@@ -66,7 +68,9 @@ def move_left():
 
             if row[j] == row[j + 1]:
 
+                global score
                 row[j] *= 2
+                score += row[j]
                 row.pop(j + 1)
                 moved = True
 
@@ -125,6 +129,31 @@ def move_down():
     board = board.T
 
     return moved
+
+
+def check_win():
+
+    return np.any(board == 2048)
+
+
+def game_over():
+
+    if np.any(board == 0):
+        return False
+
+    for i in range(SIZE):
+        for j in range(SIZE - 1):
+
+            if board[i][j] == board[i][j + 1]:
+                return False
+
+    for i in range(SIZE - 1):
+        for j in range(SIZE):
+
+            if board[i][j] == board[i + 1][j]:
+                return False
+
+    return True
 
 
 # Start Game
