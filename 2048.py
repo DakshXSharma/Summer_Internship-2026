@@ -11,6 +11,8 @@ score = 0
 
 def print_board():
 
+    print("\nScore:", score)
+
     print("\n---------------------")
 
     for row in board:
@@ -192,3 +194,20 @@ while True:
 
     if moved:
         add_new_tile()
+
+    if check_win():
+
+        print_board()
+
+        print("\n🎉 Congratulations!")
+        print("You reached 2048!")
+
+        break
+
+    if game_over():
+
+        print_board()
+
+        print("\nGame Over!")
+
+        break
