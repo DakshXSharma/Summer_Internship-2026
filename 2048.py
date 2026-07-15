@@ -173,6 +173,27 @@ def restart():
     add_new_tile()
 
 
+def undo():
+
+    global board
+    global score
+
+    global previous_board
+    global previous_score
+
+    if previous_board is not None:
+
+        board = previous_board.copy()
+
+        score = previous_score
+
+        print("\nLast move undone.")
+
+    else:
+
+        print("\nNothing to undo.")
+
+
 # Start Game
 add_new_tile()
 add_new_tile()
