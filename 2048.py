@@ -207,9 +207,14 @@ while True:
     print("A = Left")
     print("S = Down")
     print("D = Right")
+    print("R = Restart")
+    print("Z = Undo")
     print("Q = Quit")
 
     move = input("Move: ").lower()
+
+    previous_board = board.copy()
+    previous_score = score
 
     moved = False
 
