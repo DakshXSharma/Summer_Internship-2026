@@ -233,6 +233,14 @@ while True:
     elif move == "q":
         break
 
+    elif move == "r":
+        restart()
+        continue
+
+    elif move == "z":
+        undo()
+        continue
+
     if moved:
         add_new_tile()
 
