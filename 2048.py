@@ -7,6 +7,7 @@ SIZE = 4
 board = np.zeros((SIZE, SIZE), dtype=int)
 
 score = 0
+moves = 0
 previous_board = None
 previous_score = 0
 
@@ -14,6 +15,7 @@ previous_score = 0
 def print_board():
 
     print("\nScore:", score)
+    print("Moves:", moves)
 
     print("\n---------------------")
 
@@ -242,6 +244,7 @@ while True:
         continue
 
     if moved:
+        moves += 1
         add_new_tile()
 
     if check_win():
