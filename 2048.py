@@ -166,10 +166,12 @@ def restart():
 
     global board
     global score
+    global moves
 
     board = np.zeros((SIZE, SIZE), dtype=int)
 
     score = 0
+    moves = 0
 
     add_new_tile()
     add_new_tile()
